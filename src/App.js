@@ -19,7 +19,7 @@ function App() {
     
     //  Loop and detect hands
     setInterval(() => {
-      detect(net);
+      // detect(net);
     }, 10);
   };
 
