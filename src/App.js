@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 // 1. TODO - Import required model here
 // e.g. import * as tfmodel from "@tensorflow-models/tfmodel";
+import * as cocossd from "@tensorflow-models/coco-ssd"; // importing pretrained model for object detenction
 import Webcam from "react-webcam";
 import "./App.css";
 // 2. TODO - Import drawing utility here
@@ -15,11 +16,11 @@ function App() {
   // Main function
   const runCoco = async () => {
     // 3. TODO - Load network 
-    // e.g. const net = await cocossd.load();
+    const net = await cocossd.load();
     
     //  Loop and detect hands
     setInterval(() => {
-      // detect(net);
+      detect(net);
     }, 10);
   };
 
@@ -44,7 +45,8 @@ function App() {
       canvasRef.current.height = videoHeight;
 
       // 4. TODO - Make Detections
-      // e.g. const obj = await net.detect(video);
+      const obj = await net.detect(video);
+      console.log(obj)
 
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
