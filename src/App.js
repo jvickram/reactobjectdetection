@@ -7,7 +7,7 @@ import * as cocossd from "@tensorflow-models/coco-ssd"; // importing pretrained 
 import Webcam from "react-webcam";
 import "./App.css";
 // 2. TODO - Import drawing utility here
-// e.g. import { drawRect } from "./utilities";
+import { drawRect } from "./utilities";
 
 function App() {
   const webcamRef = useRef(null);
@@ -46,13 +46,13 @@ function App() {
 
       // 4. TODO - Make Detections
       const obj = await net.detect(video);
-      console.log(obj)
+      console.log(obj) // Printing the realtime data on console for objects from camera
 
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
 
       // 5. TODO - Update drawing utility
-      // drawSomething(obj, ctx)  
+      drawRect(obj, ctx)  
     }
   };
 
