@@ -5,7 +5,7 @@ export const drawRect = (detection, ctx) => {
         const text = prediction['class']
 
         // setting styling
-        const color = 'white'
+        const color = '#'+ Math.floor(Math.random()*16777215).toString(16) // adding dynamic border color to the detected objects 
         ctx.strokeStyle = color
         ctx.font = '18px Arial'
         ctx.fillStyle = color 
